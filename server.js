@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const hbs = require('hbs');
+require('./hbs/helpers')
 
 app.use(express.static(__dirname + "/public"));
 
@@ -14,7 +15,6 @@ app.get('/', (req, res) => {
 
     res.render('home', {
         nombre: 'Alberto',
-        anio: new Date().getFullYear()
     });
 
     /*
@@ -30,9 +30,7 @@ app.get('/', (req, res) => {
     */
 });
 app.get('/about', (req, res) => {
-    res.render('about', {
-        anio: new Date().getFullYear()
-    });
+    res.render('about');
 });
 app.get('/data', (req, res) => {
     res.send('Hola data');
